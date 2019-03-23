@@ -1,0 +1,10 @@
+grpc:
+  listen: "tcp://127.0.0.1:9001"
+  proto: "proto/service.proto"
+#  tls:
+#    key:  "server.key"
+#    cert: "server.crt"
+  workers:
+    command: "php worker.php"
+    pool:
+      numWorkers: 4

@@ -6,3 +6,7 @@ composer.phar
 # composer.lock
 
 .idea/
+
+consul/node1/data/
+consul/node2/data/
+consul/node3/data/

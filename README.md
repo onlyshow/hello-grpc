@@ -17,5 +17,4 @@
 `./rr-grpc grpc:workers -i`
 
 - 调用服务 
-`cd example`
-`php client.php`
+`cd example && php client.php`

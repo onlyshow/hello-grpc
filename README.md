@@ -1,11 +1,10 @@
 # hello-grpc
 
 - 安装依赖
-`composer install`
+`pecl install protobuf && pecl install grpc && composer install`
 
 - 使用proto生成服务接口和客户端
-`cd bin`
-`./gen.sh`
+`cd bin && ./gen.sh`
 
 - 启动注册中心
 `docker-compose up`

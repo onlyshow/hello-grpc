@@ -1,7 +1,7 @@
 # rpc bus allows php application and external clients to talk to rr services.
 rpc:
   # enable rpc server (enabled by default)
-  enable: true
+  enable: false
   # rpc connection DSN. Supported TCP and Unix sockets.
   listen: "tcp://0.0.0.0:6001"
 grpc:

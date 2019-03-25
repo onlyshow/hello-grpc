@@ -1,0 +1,60 @@
+version: '2'
+services:
+  node1:
+    image: consul
+    container_name: node1
+    command: agent -server -bootstrap-expect=3 -bind=172.18.0.2 -client=0.0.0.0 -ui
+    hostname: node1
+    networks:
+      app_net:
+        ipv4_address: 172.18.0.2
+    ports:
+      - "18500:8500"
+    volumes:
+      - ./consul/node1/config:/consul/config
+      - ./consul/node1/data:/consul/data
+    environment:
+      - CONSUL_DATA_DIR=/consul/data
+      - CONSUL_CONFIG_DIR=/consul/config
+  node2:
+    image: consul
+    container_name: node2
+    command: agent -server -join=172.18.0.2 -bind=172.18.0.3 -client=0.0.0.0
+    hostname: node2
+    networks:
+      app_net:
+        ipv4_address: 172.18.0.3
+    depends_on:
+      - node1
+    volumes:
+      - ./consul/node2/config:/consul/config
+      - ./consul/node2/data:/consul/data
+    environment:
+      - CONSUL_DATA_DIR=/consul/data
+      - CONSUL_CONFIG_DIR=/consul/config
+  node3:
+    image: consul
+    container_name: node3
+    command: agent -server -join=172.18.0.2 -bind=172.18.0.4 -client=0.0.0.0
+    hostname: node3
+    networks:
+      app_net:
+        ipv4_address: 172.18.0.4
+    depends_on:
+      - node1
+    volumes:
+      - ./consul/node3/config:/consul/config
+      - ./consul/node3/data:/consul/data
+    environment:
+      - CONSUL_DATA_DIR=/consul/data
+      - CONSUL_CONFIG_DIR=/consul/config
+networks:
+  app_net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/24
+          gateway: 172.18.0.1

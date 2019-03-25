@@ -1,0 +1,16 @@
+# rpc bus allows php application and external clients to talk to rr services.
+rpc:
+  # enable rpc server (enabled by default)
+  enable: true
+  # rpc connection DSN. Supported TCP and Unix sockets.
+  listen: "tcp://0.0.0.0:6003"
+grpc:
+  listen: "tcp://0.0.0.0:9003"
+  proto: "../../proto/service.proto"
+#  tls:
+#    key:  "server.key"
+#    cert: "server.crt"
+  workers:
+    command: "php worker.php"
+    pool:
+      numWorkers: 2

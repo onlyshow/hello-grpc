@@ -3,7 +3,8 @@
     "ext-grpc": "^1.19",
     "ext-protobuf": "^3.7",
     "spiral/php-grpc": "^1.0",
-    "grpc/grpc": "^1.19"
+    "grpc/grpc": "^1.19",
+    "sensiolabs/consul-php-sdk": "^3.1"
   },
   "autoload": {
     "psr-4": {

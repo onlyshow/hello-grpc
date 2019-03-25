@@ -1,0 +1,12 @@
+{
+  "service": {
+    "name": "grpc",
+    "tags": ["php_grpc_server"],
+    "address": "192.168.10.244",
+    "port": 9001,
+    "check": {
+      "tcp": "192.168.10.244:9001",
+      "interval": "10s"
+    }
+  }
+}
